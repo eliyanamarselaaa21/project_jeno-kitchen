@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Portal - Jeno Kitchen</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: #fce4ec;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+      .auth-card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .auth-tabs {
+        display: flex;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #eee;
+      }
+      .tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        color: #999;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .tab.active {
+        color: #ff1178;
+        border-bottom: 2px solid #ff1178;
+      }
+
+      .form-container {
+        display: none;
+      }
+      .form-container.active {
+        display: block;
+        animation: fadeIn 0.5s;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+      .input-group label {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 5px;
+        color: #666;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        outline: none;
+      }
+      .btn-auth {
+        width: 100%;
+        padding: 12px;
+        background: #ff1178;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <div class="tab active" onclick="switchTab('login')">Login</div>
+        <div class="tab" onclick="switchTab('register')">Registrasi</div>
+      </div>
+
+      <div id="login-form" class="form-container active">
+        <h2 style="color: #bd6a8a; text-align: center">Welcome Back!</h2>
+        <form onsubmit="handleLogin(event)">
+          <div class="input-group">
+            <label>Username</label>
+            <input type="text" id="login-user" required />
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="login-pass" required />
+          </div>
+          <button type="submit" class="btn-auth">Masuk Sekarang</button>
+        </form>
+      </div>
+
+      <div id="register-form" class="form-container">
+        <h2 style="color: #bd6a8a; text-align: center">Daftar Admin</h2>
+        <form onsubmit="handleRegister(event)">
+          <div class="input-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="reg-nama" required />
+          </div>
+          <div class="input-group">
+            <label>Username Baru</label>
+            <input type="text" id="reg-user" required />
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="reg-pass" required />
+          </div>
+          <button type="submit" class="btn-auth" style="background: #bd6a8a">
+            Buat Akun Admin
+          </button>
+        </form>
+      </div>
+
+      <p style="text-align: center; margin-top: 20px">
+        <a
+          href="index.html"
+          style="text-decoration: none; color: #999; font-size: 13px"
+          >← Kembali ke Toko</a
+        >
+      </p>
+    </div>
+
+    <script>
+      function switchTab(type) {
+        const tabs = document.querySelectorAll(".tab");
+        const forms = document.querySelectorAll(".form-container");
+
+        tabs.forEach((t) => t.classList.remove("active"));
+        forms.forEach((f) => f.classList.remove("active"));
+
+        if (type === "login") {
+          tabs[0].classList.add("active");
+          document.getElementById("login-form").classList.add("active");
+        } else {
+          tabs[1].classList.add("active");
+          document.getElementById("register-form").classList.add("active");
+        }
+      }
+
+      // LOGIKA REGISTRASI (Simpan ke LocalStorage)
+      function handleRegister(event) {
+        event.preventDefault();
+        const user = document.getElementById("reg-user").value;
+        const pass = document.getElementById("reg-pass").value;
+
+        localStorage.setItem("adminUser", user);
+        localStorage.setItem("adminPass", pass);
+
+        alert("Registrasi Berhasil! Silakan Login menggunakan akun tersebut.");
+        switchTab("login");
+      }
+
+      // LOGIKA LOGIN (Cek dari LocalStorage)
+      function handleLogin(event) {
+        event.preventDefault();
+        const user = document.getElementById("login-user").value;
+        const pass = document.getElementById("login-pass").value;
+
+        const savedUser = localStorage.getItem("adminUser");
+        const savedPass = localStorage.getItem("adminPass");
+
+        // LOGIN BERHASIL
+        if (
+          (user === savedUser && pass === savedPass) ||
+          (user === "admin" && pass === "jeno123")
+        ) {
+          alert("Login Sukses! Selamat datang di Jeno Kitchen Admin.");
+          window.location.href = "./admin/dashboard.html";
+        } else {
+          alert(
+            "Akun tidak ditemukan atau salah! Pastikan kamu sudah registrasi."
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

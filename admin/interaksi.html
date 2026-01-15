@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interaksi Pelanggan - Jeno Admin</title>
+    <link rel="stylesheet" href="style-admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .interaction-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      /* Style Testimoni Cards */
+      .feedback-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .feedback-item {
+        background: var(--white);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+        border-left: 4px solid var(--secondary);
+        transition: 0.3s;
+      }
+
+      .feedback-item:hover {
+        transform: scale(1.02);
+      }
+
+      .user-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: var(--primary);
+      }
+      .stars {
+        color: #f1c40f;
+        font-size: 0.8rem;
+      }
+      .comment {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      /* Style Subscriber Table */
+      .sub-card {
+        background: var(--white);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+      }
+
+      .btn-export {
+        background: #f1f2f6;
+        color: var(--dark);
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand-section">
+        <h2>JENO KITCHEN</h2>
+      </div>
+
+      <div class="admin-profile">
+        <div class="admin-avatar-wrapper">
+          <img
+            src="https://ui-avatars.com/api/?name=Admin+Jeno&background=ff1178&color=fff"
+            alt="Profile"
+            class="admin-avatar"
+          />
+          <div class="online-indicator"></div>
+        </div>
+        <div class="admin-info">
+          <h4>Selamat Datang,</h4>
+          <p>Admin Jeno</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link"
+          ><i class="fas fa-chart-line"></i> Dashboard</a
+        >
+        <a href="pesanan.html" class="nav-link"
+          ><i class="fas fa-shopping-cart"></i> Pesanan</a
+        >
+        <a href="produk.html" class="nav-link"
+          ><i class="fas fa-utensils"></i> Stok & Menu</a
+        >
+        <a href="interaksi.html" class="nav-link active"
+          ><i class="fas fa-comment-dots"></i> Testimoni</a
+        >
+        <a href="laporan.html" class="nav-link"
+          ><i class="fas fa-file-invoice-dollar"></i> Laporan</a
+        >
+        <a href="pengaturan.html" class="nav-link"
+          ><i class="fas fa-cog"></i> Pengaturan</a
+        >
+        <a href="../index.html" class="nav-link logout"
+          ><i class="fas fa-sign-out-alt"></i> Keluar</a
+        >
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <div>
+          <h1>Interaksi Pelanggan</h1>
+          <p style="color: #888">
+            Kelola feedback dan database pelanggan aktif
+          </p>
+        </div>
+        <div class="stats-grid" style="margin-bottom: 0">
+          <div class="card" style="padding: 10px 20px; border: none">
+            <h2 id="count-sub">3</h2>
+            <small>Subscribers</small>
+          </div>
+        </div>
+      </header>
+
+      <div class="interaction-container">
+        <div class="feedback-section">
+          <h3 style="margin-bottom: 20px">
+            <i class="fas fa-star" style="color: #f1c40f"></i> Ulasan Terbaru
+          </h3>
+          <div class="feedback-list">
+            <div class="feedback-item" id="feed-1">
+              <div class="user-meta">
+                <span class="user-name">Andini Putri</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="comment">
+                "Basrengnya juara banget! Pedesnya pas, daun jeruknya kerasa
+                banget."
+              </p>
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                "
+              >
+                <button
+                  class="btn btn-outline"
+                  style="font-size: 10px; padding: 5px 10px"
+                  onclick="balasKomen(1)"
+                >
+                  <i class="fas fa-reply"></i> Balas
+                </button>
+                <small style="color: #ccc; font-size: 0.7rem"
+                  >2 jam yang lalu</small
+                >
+              </div>
+              <div id="reply-box-1" style="display: none; margin-top: 10px">
+                <input
+                  type="text"
+                  placeholder="Tulis balasan..."
+                  class="form-input"
+                  style="font-size: 12px; padding: 8px"
+                />
+                <button
+                  class="btn btn-primary"
+                  style="padding: 5px 10px; margin-top: 5px; font-size: 10px"
+                  onclick="kirimBalasan(1)"
+                >
+                  Kirim
+                </button>
+              </div>
+            </div>
+
+            <div class="feedback-item" id="feed-2">
+              <div class="user-meta">
+                <span class="user-name">Rian Hidayat</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="far fa-star"></i>
+                </div>
+              </div>
+              <p class="comment">
+                "Kripcanya renyah, cuma pengiriman agak lama sedikit."
+              </p>
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                "
+              >
+                <button
+                  class="btn btn-outline"
+                  style="font-size: 10px; padding: 5px 10px"
+                  onclick="balasKomen(2)"
+                >
+                  <i class="fas fa-reply"></i> Balas
+                </button>
+                <small style="color: #ccc; font-size: 0.7rem"
+                  >1 hari yang lalu</small
+                >
+              </div>
+              <div id="reply-box-2" style="display: none; margin-top: 10px">
+                <input
+                  type="text"
+                  placeholder="Tulis balasan..."
+                  class="form-input"
+                  style="font-size: 12px; padding: 8px"
+                />
+                <button
+                  class="btn btn-primary"
+                  style="padding: 5px 10px; margin-top: 5px; font-size: 10px"
+                  onclick="kirimBalasan(2)"
+                >
+                  Kirim
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subscriber-section">
+          <div class="sub-card">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+              "
+            >
+              <h3>Subscriber Email</h3>
+              <button
+                class="btn btn-export"
+                onclick="alert('Mengekspor data ke Excel...')"
+              >
+                <i class="fas fa-download"></i> Export
+              </button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Email Pelanggan</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="sub-table">
+                <tr id="sub-1">
+                  <td><small>mita_99@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-2">
+                  <td><small>budi.snack@yahoo.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(2)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-3">
+                  <td><small>dina_aja@outlook.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(3)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // FUNGSI BALAS TESTIMONI
+      function balasKomen(id) {
+        const box = document.getElementById(`reply-box-${id}`);
+        box.style.display = box.style.display === "none" ? "block" : "none";
+      }
+
+      function kirimBalasan(id) {
+        alert("Balasan kamu telah dikirim ke email pelanggan!");
+        document.getElementById(`reply-box-${id}`).style.display = "none";
+      }
+
+      // FUNGSI HAPUS SUBSCRIBER
+      function hapusSub(id) {
+        if (confirm("Hapus email ini dari daftar subscriber?")) {
+          const row = document.getElementById(`sub-${id}`);
+          row.style.background = "#ffeaea";
+          row.style.transition = "0.4s";
+
+          setTimeout(() => {
+            row.remove();
+            // Update counter angka di atas
+            const count = document.getElementById("count-sub");
+            count.innerText = parseInt(count.innerText) - 1;
+          }, 400);
+        }
+      }
+    </script>
+  </body>
+</html>

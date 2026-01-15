@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Penjualan - Jeno Admin</title>
+    <link rel="stylesheet" href="style-admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .report-header {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .income-card {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 25px;
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      .filter-box {
+        background: var(--white);
+        padding: 20px;
+        border-radius: 15px;
+        display: flex;
+        gap: 15px;
+        align-items: flex-end;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+      }
+
+      .print-area {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Styling khusus saat dicetak */
+      @media print {
+        .sidebar,
+        .filter-box,
+        .btn-print,
+        .logout {
+          display: none !important;
+        }
+        .main-content {
+          margin-left: 0;
+          padding: 0;
+        }
+        .print-area {
+          box-shadow: none;
+          padding: 0;
+        }
+        body {
+          background: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand-section">
+        <h2>JENO KITCHEN</h2>
+      </div>
+
+      <div class="admin-profile">
+        <div class="admin-avatar-wrapper">
+          <img
+            src="https://ui-avatars.com/api/?name=Admin+Jeno&background=ff1178&color=fff"
+            alt="Profile"
+            class="admin-avatar"
+          />
+          <div class="online-indicator"></div>
+        </div>
+        <div class="admin-info">
+          <h4>Selamat Datang,</h4>
+          <p>Admin Jeno</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link"
+          ><i class="fas fa-chart-line"></i> Dashboard</a
+        >
+        <a href="pesanan.html" class="nav-link"
+          ><i class="fas fa-shopping-cart"></i> Pesanan</a
+        >
+        <a href="produk.html" class="nav-link"
+          ><i class="fas fa-utensils"></i> Stok & Menu</a
+        >
+        <a href="interaksi.html" class="nav-link"
+          ><i class="fas fa-comment-dots"></i> Testimoni</a
+        >
+        <a href="laporan.html" class="nav-link active"
+          ><i class="fas fa-file-invoice-dollar"></i> Laporan</a
+        >
+        <a href="pengaturan.html" class="nav-link"
+          ><i class="fas fa-cog"></i> Pengaturan</a
+        >
+        <a href="../index.html" class="nav-link logout"
+          ><i class="fas fa-sign-out-alt"></i> Keluar</a
+        >
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <h1>Laporan Penjualan</h1>
+        <button class="btn btn-primary btn-print" onclick="window.print()">
+          <i class="fas fa-print"></i> Cetak Laporan (PDF)
+        </button>
+      </header>
+
+      <div class="report-header">
+        <div class="income-card">
+          <small>Total Omzet Bulan Ini</small>
+          <h2 id="total-omzet">Rp 4.250.000</h2>
+        </div>
+        <div class="card">
+          <div>
+            <small style="color: #888">Pesanan Selesai</small>
+            <h3>128</h3>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <small style="color: #888">Rata-rata Harian</small>
+            <h3>Rp 141.000</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-box">
+        <div style="flex: 1">
+          <label style="font-size: 12px; font-weight: 600">Dari Tanggal</label>
+          <input type="date" class="form-input" id="date-from" />
+        </div>
+        <div style="flex: 1">
+          <label style="font-size: 12px; font-weight: 600"
+            >Sampai Tanggal</label
+          >
+          <input type="date" class="form-input" id="date-to" />
+        </div>
+        <button class="btn btn-outline" onclick="filterLaporan()">
+          Filter
+        </button>
+      </div>
+
+      <div class="print-area">
+        <div style="text-align: center; margin-bottom: 30px">
+          <h2 style="color: var(--primary)">JENO KITCHEN REPORT</h2>
+          <p style="font-size: 12px; color: #888">
+            Dokumen resmi ringkasan penjualan bulanan
+          </p>
+          <hr style="margin-top: 15px; opacity: 0.1" />
+        </div>
+
+        <table id="table-laporan">
+          <thead>
+            <tr>
+              <th>ID Transaksi</th>
+              <th>Tanggal</th>
+              <th>Pelanggan</th>
+              <th>Metode Pay</th>
+              <th>Total Pembayaran</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#JNO-001</td>
+              <td>12 Jan 2026</td>
+              <td>Siska Amelia</td>
+              <td>DANA</td>
+              <td><b>Rp 25.000</b></td>
+            </tr>
+            <tr>
+              <td>#JNO-002</td>
+              <td>13 Jan 2026</td>
+              <td>Budi Santoso</td>
+              <td>COD</td>
+              <td><b>Rp 50.000</b></td>
+            </tr>
+            <tr>
+              <td>#JNO-003</td>
+              <td>14 Jan 2026</td>
+              <td>Rian Hidayat</td>
+              <td>Transfer Bank</td>
+              <td><b>Rp 15.000</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      function filterLaporan() {
+        const from = document.getElementById("date-from").value;
+        const to = document.getElementById("date-to").value;
+
+        if (!from || !to) {
+          alert("Harap pilih rentang tanggal terlebih dahulu!");
+          return;
+        }
+
+        // Simulasi loading
+        const table = document.getElementById("table-laporan");
+        table.style.opacity = "0.3";
+
+        setTimeout(() => {
+          table.style.opacity = "1";
+          alert(`Menampilkan laporan dari ${from} hingga ${to}`);
+          // Di sini biasanya ada logika untuk memfilter baris tabel berdasarkan tanggal
+        }, 500);
+      }
+    </script>
+  </body>
+</html>

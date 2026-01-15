@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard - Jeno Admin</title>
+    <link rel="stylesheet" href="style-admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Gaya tambahan untuk Profile & Chart */
+      .admin-profile {
+        padding: 25px 10px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+      }
+      .admin-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid var(--secondary);
+        margin-bottom: 10px;
+        object-fit: cover;
+      }
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        background: var(--success);
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .chart-container {
+        background: var(--white);
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand-section">
+        <h2>JENO KITCHEN</h2>
+      </div>
+
+      <div class="admin-profile">
+        <div class="admin-avatar-wrapper">
+          <img
+            src="https://ui-avatars.com/api/?name=Admin+Jeno&background=ff1178&color=fff"
+            alt="Profile"
+            class="admin-avatar"
+          />
+          <div class="online-indicator"></div>
+        </div>
+        <div class="admin-info">
+          <h4>Selamat Datang,</h4>
+          <p>Admin Jeno</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-link active"
+          ><i class="fas fa-chart-line"></i> Dashboard</a
+        >
+        <a href="pesanan.html" class="nav-link"
+          ><i class="fas fa-shopping-cart"></i> Pesanan</a
+        >
+        <a href="produk.html" class="nav-link"
+          ><i class="fas fa-utensils"></i> Stok & Menu</a
+        >
+        <a href="interaksi.html" class="nav-link"
+          ><i class="fas fa-comment-dots"></i> Testimoni</a
+        >
+        <a href="laporan.html" class="nav-link"
+          ><i class="fas fa-file-invoice-dollar"></i> Laporan</a
+        >
+        <a href="pengaturan.html" class="nav-link"
+          ><i class="fas fa-cog"></i> Pengaturan</a
+        >
+        <a href="../index.html" class="nav-link logout"
+          ><i class="fas fa-sign-out-alt"></i> Keluar</a
+        >
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <h1>Ringkasan Bisnis</h1>
+        <p id="current-date" style="color: #888"></p>
+      </header>
+
+      <div class="stats-grid">
+        <div class="card">
+          <i class="fas fa-wallet" style="color: #2ecc71"></i>
+          <div>
+            <h3 class="counter" data-target="2500000">0</h3>
+            <p>Total Omzet (Rp)</p>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fas fa-box-open" style="color: var(--secondary)"></i>
+          <div>
+            <h3 class="counter" data-target="145">0</h3>
+            <p>Produk Terjual</p>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fas fa-clock" style="color: var(--warning)"></i>
+          <div>
+            <h3 class="counter" data-target="12">0</h3>
+            <p>Pesanan Pending</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <h3 style="margin-bottom: 20px; color: var(--primary)">
+          Statistik Penjualan Mingguan
+        </h3>
+        <canvas id="salesChart" height="100"></canvas>
+      </div>
+    </main>
+
+    <script>
+      // 1. Tampilkan Tanggal Hari Ini
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      document.getElementById("current-date").innerText =
+        new Date().toLocaleDateString("id-ID", options);
+
+      // 2. Animasi Angka Berjalan (Counter)
+      const counters = document.querySelectorAll(".counter");
+      counters.forEach((counter) => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText.replace(/[^0-9]/g, "");
+          const speed = target / 100;
+
+          if (count < target) {
+            const nextVal = Math.ceil(count + speed);
+            counter.innerText =
+              target > 1000 ? "Rp " + nextVal.toLocaleString("id-ID") : nextVal;
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText =
+              target > 1000 ? "Rp " + target.toLocaleString("id-ID") : target;
+          }
+        };
+        updateCount();
+      });
+
+      // 3. Grafik Interaktif (Chart.js)
+      const ctx = document.getElementById("salesChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            "Senin",
+            "Selasa",
+            "Rabu",
+            "Kamis",
+            "Jumat",
+            "Sabtu",
+            "Minggu",
+          ],
+          datasets: [
+            {
+              label: "Penjualan Snack (Pcs)",
+              data: [12, 19, 3, 5, 20, 30, 45],
+              backgroundColor: "rgba(255, 17, 120, 0.1)",
+              borderColor: "#ff1178",
+              borderWidth: 3,
+              tension: 0.4,
+              fill: true,
+              pointBackgroundColor: "#fff",
+              pointBorderColor: "#ff1178",
+              pointBorderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+          },
+          scales: {
+            y: { beginAtZero: true, grid: { display: false } },
+            x: { grid: { display: false } },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

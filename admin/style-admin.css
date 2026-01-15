@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+:root {
+  --primary: #bd6a8a;
+  --secondary: #ff1178;
+  --dark: #2d3436;
+  --light: #f8f9fa;
+  --white: #ffffff;
+  --success: #2ecc71;
+  --danger: #ff7675;
+  --warning: #f39c12;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: var(--light);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: var(--dark);
+  color: white;
+  position: fixed;
+  height: 100vh;
+  padding: 20px;
+  transition: 0.3s;
+}
+.sidebar h2 {
+  color: var(--secondary);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+.nav-menu {
+  list-style: none;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #b2bec3;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+.nav-link i {
+  margin-right: 12px;
+  width: 20px;
+  text-align: center;
+}
+.nav-link:hover,
+.nav-link.active {
+  background: var(--primary);
+  color: white;
+}
+.logout {
+  color: var(--danger) !important;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+}
+
+/* CONTENT AREA */
+.main-content {
+  margin-left: 260px;
+  padding: 40px;
+  width: 100%;
+}
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* CARDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.card i {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+/* TABLES */
+.table-container {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  padding: 15px;
+  background: #fdfdfd;
+  color: var(--primary);
+  border-bottom: 2px solid #eee;
+}
+td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+/* BUTTONS & BADGES */
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary {
+  background: var(--secondary);
+  color: white;
+}
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+}
+.btn-outline {
+  border: 1px solid #ddd;
+  background: none;
+}
+.badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.bg-success {
+  background: #e3f9eb;
+  color: var(--success);
+}
+.bg-warning {
+  background: #fff4e5;
+  color: var(--warning);
+}
+
+input[type="number"],
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Update Sidebar Profile Style */
+.brand-section {
+  padding: 10px 0 25px 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand-section h2 {
+  font-size: 1.5rem;
+  color: var(--secondary);
+  letter-spacing: 2px;
+  margin-bottom: 0;
+}
+
+.admin-profile {
+  padding: 25px 10px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.admin-avatar-wrapper {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
+}
+
+.admin-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--secondary);
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(255, 17, 120, 0.3);
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background: var(--success);
+  border: 2px solid var(--dark);
+  border-radius: 50%;
+}
+
+.admin-info h4 {
+  color: #eee;
+  font-size: 12px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.admin-info p {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}

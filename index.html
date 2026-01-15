@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeno Kitchen - Eliyana</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar fixed-top">
+      <div class="container nav-wrapper">
+        <a class="navbar-brand" href="#">
+          <img
+            src="poto/logo-jk.png"
+            alt="Logo Jeno Kitchen"
+            class="logo-brand"
+          />
+          <span>JENO KITCHEN</span>
+        </a>
+
+        <button class="navbar-toggler" id="menu-toggle">
+          <span class="fas fa-bars"></span>
+        </button>
+
+        <div class="navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimoni">Testimoni</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-icon-desktop">
+          <a
+            href="javascript:void(0)"
+            onclick="bukaModal()"
+            class="text-white fs-4"
+            style="position: relative; text-decoration: none"
+          >
+            <i class="fas fa-shopping-cart"></i>
+            <span
+              id="cart-count"
+              style="
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background: #ff1178;
+                color: white;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 12px;
+                font-weight: bold;
+              "
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-jeno" id="home">
+      <div class="hero-img-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-lines"></div>
+
+      <div class="container hero-content">
+        <h1 class="title-jeno">JENO</h1>
+        <h1 class="title-kitchen">KITCHEN</h1>
+        <p class="hero-tagline">
+          "Rasakan Sensasi Pedas Gurih yang Bikin Nagih!"<br />
+          <span>Cemilan Khas rumahan, cita rasa khas lokal</span>
+        </p>
+        <a href="#menu" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+    </section>
+
+    <section class="about-section" id="tentang">
+      <div class="container-custom">
+        <div class="header-tentang">
+          <div class="title-line-bg"></div>
+          <h2 class="section-title-box">TENTANG KAMI</h2>
+        </div>
+
+        <div class="flex-wrapper">
+          <div class="box-gambar">
+            <img
+              src="poto/bg header1.jpeg"
+              alt="Snack Jeno"
+              class="poto-tentang"
+            />
+          </div>
+
+          <div class="box-teks">
+            <p>
+              Jeno Kitchen adalah UMKM lokal yang menghadirkan berbagai camilan
+              pedas dan gurih khas rumahan dengan cita rasa khas lokal. Kami
+              percaya bahwa setiap gigitan camilan bisa membuat kalian
+              ketagihan.
+            </p>
+            <h4 class="fw-bold">Visi:</h4>
+            <p>
+              "Menjadi UMKM kuliner terdepan dalam menghadirkan cemilan khas
+              rumahan yang lezat, berkualitas, dan digemari semua kalangan."
+            </p>
+            <h4 class="fw-bold">Misi:</h4>
+            <ul class="list-unstyled">
+              <li>
+                Menyediakan produk berkualitas tinggi dengan cita rasa khas,
+                bahan baku pilihan, dan proses produksi yang higienis.
+              </li>
+              <li>
+                Mengembangkan variasi produk secara inovatif agar selalu sesuai
+                dengan selera konsumen dan tren pasar.
+              </li>
+              <li>
+                Menjaga harga yang terjangkau agar produk Jeno Kitchen dapat
+                dinikmati oleh semua kalangan.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="custom-shape-divider-bottom">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.83C25.73,99.21,81.26,101.11,135.5,95.83,205.78,89,263.39,67.23,321.39,56.44Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <section class="menu-section text-center" id="menu">
+      <div class="header-tentang">
+        <div class="title-line-bg"></div>
+        <h2 class="section-title-box">MENU KAMI</h2>
+      </div>
+
+      <div class="container">
+        <div class="slider-container-wrapper">
+          <button class="nav-btn prev-btn" onclick="scrollMenu(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="grid-menu mt-4" id="menuSlider">
+            <div class="card-product">
+              <img src="poto/kripca.jpeg" alt="kripca" />
+              <div class="card-body">
+                <div class="d-flex-between">
+                  <h3 class="fw-bold">KRIPIK KACA</h3>
+                  <i class="far fa-heart text-danger"></i>
+                </div>
+                <div class="d-flex-between align-center mt-3">
+                  <span class="price-tag">Rp. 5.000</span>
+                  <button
+                    onclick="tambahKeKeranjang('Kripk Kaca', 5000)"
+                    class="btn-plus"
+                    style="border: none; cursor: pointer"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-product">
+              <img src="poto/basreng.jpeg" alt="Basreng" />
+              <div class="card-body">
+                <div class="d-flex-between">
+                  <h3 class="fw-bold">BASRENG</h3>
+                  <i class="far fa-heart text-danger"></i>
+                </div>
+                <div class="d-flex-between align-center mt-3">
+                  <span class="price-tag">Rp. 5.000</span>
+                  <button
+                    onclick="tambahKeKeranjang('Basreng', 5000)"
+                    class="btn-plus"
+                    style="border: none; cursor: pointer"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-product">
+              <img src="poto/usus krispi.jpeg" alt="Usus" />
+              <div class="card-body">
+                <div class="d-flex-between">
+                  <h3 class="fw-bold">USUS CRISPY</h3>
+                  <i class="far fa-heart text-danger"></i>
+                </div>
+                <div class="d-flex-between align-center mt-3">
+                  <span class="price-tag">Rp. 5.000</span>
+                  <button
+                    onclick="tambahKeKeranjang('Usus Krispi', 5000)"
+                    class="btn-plus"
+                    style="border: none; cursor: pointer"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-product">
+              <img src="poto/kerupuk seblak.jpeg" alt="Seblak" />
+              <div class="card-body">
+                <div class="d-flex-between">
+                  <h3 class="fw-bold">KERUPUK SEBLAK</h3>
+                  <i class="far fa-heart text-danger"></i>
+                </div>
+                <div class="d-flex-between align-center mt-3">
+                  <span class="price-tag">Rp. 5.000</span>
+                  <button
+                    onclick="tambahKeKeranjang('Kerupuk Seblak', 5000)"
+                    class="btn-plus"
+                    style="border: none; cursor: pointer"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="nav-btn next-btn" onclick="scrollMenu(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="testi-section" id="testimoni">
+      <div class="testi-container">
+        <h3 class="testi-subtitle">Customer Stories</h3>
+        <h1 class="testi-title">Happy Customers, Happy Us!</h1>
+
+        <div class="testi-wrapper">
+          <div class="testi-card">
+            <div class="testi-header">
+              <img
+                src="https://i.pravatar.cc/150?img=32"
+                alt="user"
+                class="testi-avatar"
+              />
+              <div class="testi-user-info">
+                <h4 class="testi-user-name">Mirna Lestari</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="testi-text">
+              "Pedasnya pas, kriuknya bikin ketagihan! Saya selalu stocking
+              camilan ini buat ngemil sore anak kosan favorit semua teman di
+              kos."
+            </p>
+          </div>
+
+          <div class="testi-card active">
+            <div class="testi-header">
+              <img
+                src="https://i.pravatar.cc/150?img=44"
+                alt="user"
+                class="testi-avatar-large"
+              />
+              <div class="testi-user-info">
+                <h4 class="testi-user-name">Putri Nana Emel</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="testi-text">
+              "Rasa rempahnya autentik banget! Saya suka karena setiap bumbu
+              terasa meresap dan nggak bikin eneg. Sekarang saya pesannya selalu
+              dalam jumlah banyak!"
+            </p>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-header">
+              <img
+                src="https://i.pravatar.cc/150?img=12"
+                alt="user"
+                class="testi-avatar"
+              />
+              <div class="testi-user-info">
+                <h4 class="testi-user-name">Hansel Pratama</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="testi-text">
+              "Kemasan higienis & tahan lama—praktis dibawa kemana-mana. Saya
+              bawain ini saat piknik keluarga, dan semua nggak berhenti
+              ngunyah!"
+            </p>
+          </div>
+        </div>
+
+        <div class="testi-dots">
+          <span class="dot"></span>
+          <span class="dot active-dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <div class="testi-form-wrapper">
+          <div class="testi-form-card">
+            <h3>Ceritakan Pengalamanmu!</h3>
+            <p>Bagikan pendapatmu tentang cemilan Jeno Kitchen</p>
+
+            <div class="testi-input-box">
+              <input
+                type="text"
+                id="testi-nama"
+                placeholder="Nama Lengkap"
+                required
+              />
+              <textarea
+                id="testi-pesan"
+                placeholder="Tulis ulasanmu di sini..."
+                required
+              ></textarea>
+
+              <div class="rating-input">
+                <span>Berikan Rating: </span>
+                <select id="testi-rating">
+                  <option value="★★★★★">★★★★★ (Luar Biasa)</option>
+                  <option value="★★★★">★★★★ (Sangat Enak)</option>
+                  <option value="★★★">★★★ (Biasa Saja)</option>
+                </select>
+              </div>
+
+              <button onclick="kirimTestimoni()" class="btn-submit-testi">
+                Kirim Testimoni
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo-banner">
+      <div class="promo-container" id="promo-content">
+        <h2 class="promo-title">Join in and get 15% Off!!</h2>
+        <p class="promo-subtitle">"Sign up now & claim your 15% discount!"</p>
+
+        <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+          <input
+            type="email"
+            id="promo-email"
+            placeholder="Email Address"
+            class="promo-input"
+            required
+          />
+          <button type="submit" class="btn-subscribe">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact-section" id="kontak">
+      <div class="container">
+        <div class="header-tentang">
+          <div class="title-line-bg"></div>
+          <h2 class="section-title-box">HUBUNGI KAMI</h2>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3476314486816!2d108.45655727587639!3d-6.9682528682312475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1671c0ea5417%3A0x359691d79d9f7359!2sFajar%20Toserba!5e0!3m2!1sen!2sid!4v1768451549959!5m2!1sen!2sid"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div class="contact-details">
+            <div class="contact-info">
+              <p>
+                <a
+                  href="https://wa.me/6285211948563?text=Halo%20Jeno%20Kitchen,%20saya%20mau%20order%20camilannya"
+                  target="_blank"
+                  class="contact-link"
+                >
+                  <i class="fa-brands fa-whatsapp"></i> 085211948563
+                </a>
+              </p>
+
+              <p>
+                <a href="mailto:jenokitchen@gmail.com" class="contact-link">
+                  <i class="fa-regular fa-envelope"></i> jenokitchen@gmail.com
+                </a>
+              </p>
+
+              <p>
+                <a href="tel:085211948563" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> 082219162297
+                </a>
+              </p>
+
+              <p>
+                <a
+                  href="https://maps.google.com/?q=Fajar+Toserba+Cigugur+Kuningan"
+                  target="_blank"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-location-dot"></i> Dusun Pahing, Karang
+                  Anyar, Cigugur, Kuningan, Jawa Barat
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h5 class="footer-title">Contact Us</h5>
+            <div class="footer-content-box">
+              <a
+                href="https://wa.me/6285211948563?text=Halo%20Jeno%20Kitchen,%20saya%20mau%20order%20camilannya"
+                target="_blank"
+                class="f-link"
+                ><i class="fa-brands fa-whatsapp"></i> 085211948563</a
+              >
+              <a href="mailto:jenokitchen@gmail.com" class="f-link"
+                ><i class="fa-regular fa-envelope"></i> jenokitchen@gmail.com</a
+              >
+              <p class="f-text">
+                <i class="fa-solid fa-location-dot"></i> Cigugur, Kuningan
+              </p>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h5 class="footer-title">Quick Links</h5>
+            <div class="footer-content-box">
+              <a href="#home" class="f-link">Beranda</a>
+              <a href="#tentang" class="f-link">Tentang kami</a>
+              <a href="#menu" class="f-link">Menu Kami</a>
+              <a href="#testimoni" class="f-link">Testimoni</a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h5 class="footer-title">Follow Us</h5>
+            <div class="footer-content-box">
+              <div class="social-flex">
+                <a href="#" class="s-icon"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a href="#" class="s-icon"
+                  ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/ellymrsella?igsh=MTJyZ3Jyeml4dzR6NQ=="
+                  target="_blank"
+                  class="s-icon"
+                >
+                  <i class="fa-brands fa-instagram"></i
+                ></a>
+                <a href="#" class="s-icon"
+                  ><i class="fa-brands fa-telegram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="f-line" />
+        <p class="f-copy">
+          ©2026 || Jeno Kitchen. All rights reserved.
+          <a
+            href="login.html"
+            style="
+              color: inherit;
+              text-decoration: none;
+              opacity: 0.5;
+              font-size: 10px;
+              margin-left: 10px;
+            "
+          >
+            <i class="fas fa-lock"></i>
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+    <div id="modalKeranjang" class="modal-keranjang">
+      <div class="modal-content">
+        <h3>Struk Pesanan 📋</h3>
+        <hr />
+
+        <div style="margin-bottom: 15px">
+          <input
+            type="text"
+            id="nama-pembeli"
+            placeholder="Nama Lengkap"
+            style="
+              width: 100%;
+              padding: 10px;
+              margin-bottom: 8px;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+            "
+          />
+          <textarea
+            id="alamat-pembeli"
+            placeholder="Alamat Pengiriman"
+            style="
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              height: 80px;
+            "
+          ></textarea>
+        </div>
+
+        <div
+          id="list-pesanan"
+          style="
+            text-align: left;
+            margin: 15px 0;
+            max-height: 200px;
+            overflow-y: auto;
+          "
+        ></div>
+
+        <h4
+          id="total-harga"
+          style="
+            color: #ff1178;
+            font-size: 1.2rem;
+            border-top: 2px dashed #eee;
+            padding-top: 10px;
+          "
+        >
+          Total: Rp 0
+        </h4>
+
+        <div style="margin-top: 15px; text-align: left">
+          <label style="font-size: 12px; font-weight: 600; color: #555"
+            >Pilih Metode Pembayaran:</label
+          >
+          <select
+            id="metodeBayar"
+            style="
+              width: 100%;
+              padding: 10px;
+              border-radius: 8px;
+              border: 1px solid #ddd;
+              margin-top: 5px;
+            "
+          >
+            <option value="Transfer Bank / E-Wallet">
+              Transfer Bank / E-Wallet (DANA/OVO)
+            </option>
+            <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat)</option>
+          </select>
+        </div>
+
+        <button
+          onclick="prosesCheckoutAkhir()"
+          class="btn-pesan-wa"
+          style="
+            background: #25d366;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+          "
+        >
+          <i class="fab fa-whatsapp"></i> Konfirmasi & Pesan Sekarang
+        </button>
+
+        <button
+          onclick="tutupModal()"
+          style="
+            border: none;
+            background: none;
+            color: #888;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 0.9rem;
+          "
+        >
+          <i class="fas fa-arrow-left"></i> Kembali Belanja
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
