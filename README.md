@@ -25,7 +25,6 @@ AOS Library: Untuk efek animasi scroll.
 FontAwesome: Untuk ikon yang menarik.
 
 
-## 📂 Cara Instalasi
-1. Clone repositori ini:
-   ```bash
-   git clone [https://github.com/username-kamu/jeno-kitchen.git](https://github.com/username-kamu/jeno-kitchen.git)
+## 🔗 Demo Website
+Kamu bisa mencoba versi live website Jeno Kitchen di sini:
+👉 **[Klik di sini untuk melihat Demo Website](https://eliyanamarselaaa21.github.io/project_jeno-kitchen/)**
