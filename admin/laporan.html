@@ -10,6 +10,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px; /* Tambahkan ini agar ada jarak ke bawah */
+      }
       .report-header {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -41,6 +47,9 @@
         padding: 40px;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      .btn-print {
+        margin-bottom: 10px;
       }
 
       /* Styling khusus saat dicetak */
