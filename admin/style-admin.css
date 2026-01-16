@@ -234,3 +234,29 @@ input[type="password"] {
   font-weight: 600;
   font-size: 16px;
 }
+
+/* WADAHH POTO DI BAGIAN PRODUK ADMIN
+/* 1. Atur wadah fotonya dulu */
+.product-img {
+  width: 100%; /* Mengikuti lebar kartu */
+  height: 180px; /* Tentukan tinggi yang seragam agar rapi */
+  overflow: hidden; /* Biar kalau fotonya kegedean gak keluar jalur */
+  border-radius: 1px; /* Bikin sudutnya melengkung biar estetik */
+  background-color: #f0f0f0; /* Warna cadangan kalau foto gagal dimuat */
+  margin-bottom: 10px; /* Jarak ke teks nama produk */
+}
+
+/* 2. Atur fotonya agar memenuhi wadah */
+.product-img img {
+  width: 100%; /* Lebar penuh */
+  height: 100%; /* Tinggi penuh sesuai wadah (180px) */
+  object-fit: cover; /* RAHASIA: Biar foto gak gepeng/penyet */
+  object-position: center; /* Fokus ke tengah foto */
+  display: block; /* Menghilangkan whitespace aneh di bawah gambar */
+  transition: transform 0.3s ease; /* Biar ada efek halus pas di-hover */
+}
+
+/* 3. Kasih efek sedikit pas kursor di atas produk */
+.product-info:hover .product-img img {
+  transform: scale(1.05); /* Foto nge-zoom dikit, keren kan? */
+}

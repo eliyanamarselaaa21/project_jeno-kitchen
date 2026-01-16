@@ -86,11 +86,11 @@ function prosesCheckoutAkhir() {
   }
 
   let nomor = "6285211948563"; // Nomor WA Admin kamu
-  let pesan = `*PESANAN BARU - JENO KITCHEN* 🛒\n`;
+  let pesan = `*PESANAN BARU - JENO KITCHEN*\n`;
   pesan += `----------------------------------\n`;
-  pesan += `👤 *Nama:* ${nama}\n`;
-  pesan += `📍 *Alamat:* ${alamat}\n`;
-  pesan += `💳 *Metode:* ${metode}\n`;
+  pesan += `*Nama:* ${nama}\n`;
+  pesan += `*Alamat:* ${alamat}\n`;
+  pesan += `*Metode:* ${metode}\n`;
   pesan += `----------------------------------\n`;
   pesan += `*Daftar Camilan:*\n`;
 
@@ -103,7 +103,7 @@ function prosesCheckoutAkhir() {
   pesan += `----------------------------------\n`;
   pesan += `*TOTAL AKHIR: Rp ${total.toLocaleString()}*\n`;
   pesan += `----------------------------------\n`;
-  pesan += `\n_Mohon segera diproses ya Admin Jeno Kitchen!_ ✨`;
+  pesan += `\n_Mohon segera diproses ya Admin Jeno Kitchen!_`;
 
   // Efek Loading pada tombol
   const btn = document.querySelector(".btn-pesan-wa");

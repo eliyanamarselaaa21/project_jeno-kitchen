@@ -10,6 +10,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
+      .header {
+        margin-bottom: 35px !important; /* Memberikan ruang antara judul dan konten di bawahnya */
+      }
+
+      /* Tambahan: Biar teks deskripsi tidak terlalu rapat dengan judul H1 */
+      .header h1 {
+        margin-bottom: 5px;
+      }
       /* CSS Khusus Halaman Produk untuk Layout 2 Kolom */
       .crud-wrapper {
         display: grid;
@@ -285,15 +293,14 @@
               <tr id="row-1">
                 <td>
                   <div class="product-info">
-                    <div
-                      class="product-img"
-                      style="
-                        background: url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=100')
-                          center/cover;
-                      "
-                    ></div>
+                    <div class="product-img">
+                      <img
+                        src="C:\ELIYANA MARSELA CIKMURA\_KULIAH\Semester 3\PRAKTIKUM DESAIN WEB\ELIYANA_PROJECT\project_jeno\poto\basreng.jpeg"
+                        alt="basreng"
+                      />
+                    </div>
                     <div>
-                      <b class="val-nama">Basreng Pedas</b><br />
+                      <b class="val-nama">Basreng</b><br />
                       <small style="color: #aaa">Camilan</small>
                     </div>
                   </div>
@@ -314,21 +321,76 @@
               <tr id="row-2">
                 <td>
                   <div class="product-info">
-                    <div
-                      class="product-img"
-                      style="
-                        background: url('https://images.unsplash.com/photo-1621447509323-98696e744726?q=80&w=100')
-                          center/cover;
-                      "
-                    ></div>
+                    <div class="product-img">
+                      <img
+                        src="C:\ELIYANA MARSELA CIKMURA\_KULIAH\Semester 3\PRAKTIKUM DESAIN WEB\ELIYANA_PROJECT\project_jeno\poto\kripca.jpeg"
+                        alt="basreng"
+                      />
+                    </div>
                     <div>
-                      <b class="val-nama">Kripca Daun Jeruk</b><br />
+                      <b class="val-nama">Kripik KAca</b><br />
                       <small style="color: #aaa">Camilan</small>
                     </div>
                   </div>
                 </td>
-                <td class="val-harga">Rp 10.000</td>
-                <td><span class="badge warning val-stok">5 Pcs</span></td>
+                <td class="val-harga">Rp 5.000</td>
+                <td><span class="badge warning val-stok">50 Pcs</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button onclick="editItem(2)" class="btn-icon btn-edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button onclick="deleteItem(2)" class="btn-icon btn-delete">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr id="row-2">
+                <td>
+                  <div class="product-info">
+                    <div class="product-img">
+                      <img
+                        src="C:\ELIYANA MARSELA CIKMURA\_KULIAH\Semester 3\PRAKTIKUM DESAIN WEB\ELIYANA_PROJECT\project_jeno\poto\usus krispi.jpeg"
+                        alt="basreng"
+                      />
+                    </div>
+                    <div>
+                      <b class="val-nama">Usus Krispi</b><br />
+                      <small style="color: #aaa">Camilan</small>
+                    </div>
+                  </div>
+                </td>
+                <td class="val-harga">Rp 5.000</td>
+                <td><span class="badge warning val-stok">67 Pcs</span></td>
+                <td>
+                  <div class="action-btns">
+                    <button onclick="editItem(2)" class="btn-icon btn-edit">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button onclick="deleteItem(2)" class="btn-icon btn-delete">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr id="row-2">
+                <td>
+                  <div class="product-info">
+                    <div class="product-img">
+                      <img
+                        src="C:\ELIYANA MARSELA CIKMURA\_KULIAH\Semester 3\PRAKTIKUM DESAIN WEB\ELIYANA_PROJECT\project_jeno\poto\kerupuk seblak.jpeg"
+                        alt="basreng"
+                      />
+                    </div>
+                    <div>
+                      <b class="val-nama">Kerupuk Seblak</b><br />
+                      <small style="color: #aaa">Camilan</small>
+                    </div>
+                  </div>
+                </td>
+                <td class="val-harga">Rp 5.000</td>
+                <td><span class="badge warning val-stok">80 Pcs</span></td>
                 <td>
                   <div class="action-btns">
                     <button onclick="editItem(2)" class="btn-icon btn-edit">

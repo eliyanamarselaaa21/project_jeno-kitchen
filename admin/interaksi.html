@@ -10,17 +10,56 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
-      .interaction-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+      /* Menata header agar punya jarak yang cukup dari sidebar dan konten bawah */
+      .header {
+        margin-bottom: 40px; /* Memberi ruang napas di bawah judul */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
       }
 
-      /* Style Testimoni Cards */
+      /* Mengatur container utama */
+      .interaction-container {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr; /* Testimoni dibuat sedikit lebih lebar */
+        gap: 35px; /* Jarak antar kolom lebih lega */
+        align-items: start;
+      }
+
+      /* Memperbaiki jarak pada list feedback */
       .feedback-list {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 20px; /* Jarak antar kartu testimoni */
+        margin-top: 10px;
+      }
+
+      /* Memperbaiki tampilan kartu subscriber */
+      .sub-card {
+        background: var(--white);
+        padding: 30px; /* Padding lebih dalam agar terlihat eksklusif */
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Merapikan tabel agar tidak mepet ke pinggir kotak */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      th {
+        text-align: left;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f1f2f6;
+        color: #888;
+        font-size: 0.85rem;
+      }
+
+      td {
+        padding: 15px 0;
+        border-bottom: 1px solid #f8f9fa;
       }
 
       .feedback-item {
@@ -122,21 +161,39 @@
       <header class="header">
         <div>
           <h1>Interaksi Pelanggan</h1>
-          <p style="color: #888">
+          <p style="color: #888; margin-top: 5px">
             Kelola feedback dan database pelanggan aktif
           </p>
         </div>
-        <div class="stats-grid" style="margin-bottom: 0">
-          <div class="card" style="padding: 10px 20px; border: none">
-            <h2 id="count-sub">3</h2>
-            <small>Subscribers</small>
+
+        <div class="stats-grid" style="margin: 0">
+          <div
+            class="card"
+            style="
+              padding: 15px 25px;
+              border: none;
+              text-align: center;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <h2 id="count-sub" style="color: var(--primary); line-height: 1">
+              308
+            </h2>
+            <small style="color: #888">Subscribers</small>
           </div>
         </div>
       </header>
 
       <div class="interaction-container">
         <div class="feedback-section">
-          <h3 style="margin-bottom: 20px">
+          <h3
+            style="
+              margin-bottom: 25px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            "
+          >
             <i class="fas fa-star" style="color: #f1c40f"></i> Ulasan Terbaru
           </h3>
           <div class="feedback-list">
@@ -170,6 +227,150 @@
                 </button>
                 <small style="color: #ccc; font-size: 0.7rem"
                   >2 jam yang lalu</small
+                >
+              </div>
+              <div id="reply-box-1" style="display: none; margin-top: 10px">
+                <input
+                  type="text"
+                  placeholder="Tulis balasan..."
+                  class="form-input"
+                  style="font-size: 12px; padding: 8px"
+                />
+                <button
+                  class="btn btn-primary"
+                  style="padding: 5px 10px; margin-top: 5px; font-size: 10px"
+                  onclick="kirimBalasan(1)"
+                >
+                  Kirim
+                </button>
+              </div>
+            </div>
+
+            <div class="feedback-item" id="feed-1">
+              <div class="user-meta">
+                <span class="user-name">Syfa Nurahim</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="comment">
+                "Usus krispi nya juara banget, pedes nya nendang bikin ketagihan
+                !!!"
+              </p>
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                "
+              >
+                <button
+                  class="btn btn-outline"
+                  style="font-size: 10px; padding: 5px 10px"
+                  onclick="balasKomen(1)"
+                >
+                  <i class="fas fa-reply"></i> Balas
+                </button>
+                <small style="color: #ccc; font-size: 0.7rem"
+                  >5 jam yang lalu</small
+                >
+              </div>
+              <div id="reply-box-1" style="display: none; margin-top: 10px">
+                <input
+                  type="text"
+                  placeholder="Tulis balasan..."
+                  class="form-input"
+                  style="font-size: 12px; padding: 8px"
+                />
+                <button
+                  class="btn btn-primary"
+                  style="padding: 5px 10px; margin-top: 5px; font-size: 10px"
+                  onclick="kirimBalasan(1)"
+                >
+                  Kirim
+                </button>
+              </div>
+            </div>
+
+            <div class="feedback-item" id="feed-1">
+              <div class="user-meta">
+                <span class="user-name">Ainun Mutia</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="comment">
+                "Peses gurih enak rasanya pas di lidah aku, next order lagi yang
+                banya !!"
+              </p>
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                "
+              >
+                <button
+                  class="btn btn-outline"
+                  style="font-size: 10px; padding: 5px 10px"
+                  onclick="balasKomen(1)"
+                >
+                  <i class="fas fa-reply"></i> Balas
+                </button>
+                <small style="color: #ccc; font-size: 0.7rem"
+                  >9 jam yang lalu</small
+                >
+              </div>
+              <div id="reply-box-1" style="display: none; margin-top: 10px">
+                <input
+                  type="text"
+                  placeholder="Tulis balasan..."
+                  class="form-input"
+                  style="font-size: 12px; padding: 8px"
+                />
+                <button
+                  class="btn btn-primary"
+                  style="padding: 5px 10px; margin-top: 5px; font-size: 10px"
+                  onclick="kirimBalasan(1)"
+                >
+                  Kirim
+                </button>
+              </div>
+            </div>
+
+            <div class="feedback-item" id="feed-1">
+              <div class="user-meta">
+                <span class="user-name">Zaskia Sahra</span>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="comment">"Jujur Enak bangetttt."</p>
+              <div
+                style="
+                  margin-top: 10px;
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                "
+              >
+                <button
+                  class="btn btn-outline"
+                  style="font-size: 10px; padding: 5px 10px"
+                  onclick="balasKomen(1)"
+                >
+                  <i class="fas fa-reply"></i> Balas
+                </button>
+                <small style="color: #ccc; font-size: 0.7rem"
+                  >10 jam yang lalu</small
                 >
               </div>
               <div id="reply-box-1" style="display: none; margin-top: 10px">
@@ -267,6 +468,90 @@
               <tbody id="sub-table">
                 <tr id="sub-1">
                   <td><small>mita_99@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>esih00@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>sri_himma22@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>Desilaila01@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>revaa@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>Eliyana@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>siti199@gmail.com</small></td>
+                  <td>
+                    <button
+                      class="btn"
+                      style="color: var(--danger)"
+                      onclick="hapusSub(1)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="sub-1">
+                  <td><small>ptrprtm25@gmail.com</small></td>
                   <td>
                     <button
                       class="btn"
